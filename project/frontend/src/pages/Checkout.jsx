@@ -63,12 +63,12 @@ const Checkout = () => {
         paymentMethod
       }
 
-      const orderResponse = await axios.post('/api/orders', orderData)
+      const orderResponse = await axios.post('https://yasodanandani.onrender.com/api/orders', orderData)
       const order = orderResponse.data
 
       if (paymentMethod === 'razorpay') {
         // Create Razorpay order
-        const paymentResponse = await axios.post('/api/payments/create-order', {
+        const paymentResponse = await axios.post('https://yasodanandani.onrender.com/api/payments/create-order', {
           orderId: order._id
         })
 
@@ -76,13 +76,13 @@ const Checkout = () => {
           key: paymentResponse.data.key,
           amount: paymentResponse.data.amount,
           currency: paymentResponse.data.currency,
-          name: 'ShopEase',
+          name: 'Yasodanandani',
           description: `Order #${order._id}`,
           order_id: paymentResponse.data.id,
           handler: async function (response) {
             try {
               // Verify payment
-              await axios.post('/api/payments/verify-payment', {
+              await axios.post('https://yasodanandani.onrender.com/api/payments/verify-payment', {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
                 razorpay_signature: response.razorpay_signature,

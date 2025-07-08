@@ -24,12 +24,12 @@ const ProductDetail = () => {
   const fetchProduct = async () => {
     try {
       setLoading(true)
-      const response = await axios.get(`/api/products/${id}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/products/${id}`)
       setProduct(response.data)
       
       // Fetch related products
       if (response.data.category) {
-        const relatedResponse = await axios.get(`/api/products?category=${response.data.category}&limit=4`)
+        const relatedResponse = await axios.get(`https://yasodanandani.onrender.com/api/products?category=${response.data.category}&limit=4`)
         setRelatedProducts(relatedResponse.data.products.filter(p => p._id !== id))
       }
     } catch (error) {

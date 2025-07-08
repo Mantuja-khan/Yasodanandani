@@ -362,48 +362,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Enhanced Categories Section */}
-      <section className="py-8 md:py-16 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-              Shop by Category
-            </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-              Find the perfect kurti for every occasion and style preference
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {categories.map((category, index) => (
-              <Link
-                key={index}
-                to="/products"
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
-              >
-                <div className="aspect-square">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className={`absolute inset-0 bg-gradient-to-t ${category.gradient} group-hover:opacity-95 transition-opacity duration-300`}></div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
-                  <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:scale-110 transition-transform duration-300 text-center">
-                    {category.name}
-                  </h3>
-                  <p className="text-sm opacity-90 text-center">{category.count}</p>
-                  <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ArrowRight className="h-5 w-5" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
+   
       {/* Enhanced Featured Products */}
       <section className="py-8 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">

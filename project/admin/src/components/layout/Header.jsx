@@ -20,8 +20,8 @@ const Header = ({ onMenuClick }) => {
     try {
       setLoading(true)
       const [ordersRes, usersRes] = await Promise.all([
-        axios.get('/api/orders/admin/recent'),
-        axios.get('/api/users/admin/recent')
+        axios.get('https://yasodanandani.onrender.com/api/orders/admin/recent'),
+        axios.get('https://yasodanandani.onrender.com/api/users/admin/recent')
       ])
 
       const orderNotifications = ordersRes.data.map(order => ({
@@ -59,8 +59,8 @@ const Header = ({ onMenuClick }) => {
     try {
       // Clear notifications on backend
       await Promise.all([
-        axios.post('/api/orders/admin/clear-notifications'),
-        axios.post('/api/users/admin/clear-notifications')
+        axios.post('https://yasodanandani.onrender.com/api/orders/admin/clear-notifications'),
+        axios.post('https://yasodanandani.onrender.com/api/users/admin/clear-notifications')
       ])
       
       // Update local state

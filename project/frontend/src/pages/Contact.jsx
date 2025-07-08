@@ -24,7 +24,7 @@ const Contact = () => {
     setLoading(true)
 
     try {
-      const response = await axios.post('/api/contact/submit', formData)
+      const response = await axios.post('https://yasodanandani.onrender.com/api/contact/submit', formData)
       toast.success(response.data.message)
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch (error) {
@@ -38,7 +38,7 @@ const Contact = () => {
     {
       icon: <Phone className="h-4 w-4 md:h-6 md:w-6" />,
       title: "Call Us",
-      details: "+91 98765 43210",
+      details: "+91 93588 53990",
       description: "Mon-Sat 10am to 7pm",
       color: "bg-blue-500"
     },

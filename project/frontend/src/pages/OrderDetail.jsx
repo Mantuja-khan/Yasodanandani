@@ -15,7 +15,7 @@ const OrderDetail = () => {
 
   const fetchOrder = async () => {
     try {
-      const response = await axios.get(`/api/orders/${id}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/orders/${id}`)
       setOrder(response.data)
     } catch (error) {
       toast.error('Order not found')

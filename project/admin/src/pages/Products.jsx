@@ -24,7 +24,7 @@ const Products = () => {
         search: searchTerm
       })
 
-      const response = await axios.get(`/api/products?${params}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/products?${params}`)
       setProducts(response.data.products)
       setTotalPages(response.data.totalPages)
     } catch (error) {
@@ -37,7 +37,7 @@ const Products = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        await axios.delete(`/api/products/${id}`)
+        await axios.delete(`https://yasodanandani.onrender.com/api/products/${id}`)
         toast.success('Product deleted successfully')
         fetchProducts()
       } catch (error) {

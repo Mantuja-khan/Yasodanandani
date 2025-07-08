@@ -38,7 +38,7 @@ const Orders = () => {
         params.append('status', statusFilter)
       }
 
-      const response = await axios.get(`/api/orders?${params}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/orders?${params}`)
       setOrders(response.data.orders)
       setTotalPages(response.data.totalPages)
     } catch (error) {

@@ -54,7 +54,7 @@ const Login = () => {
 
     try {
       setForgotPasswordLoading(true)
-      await axios.post('/api/auth/forgot-password', { email: forgotPasswordData.email })
+      await axios.post('https://yasodanandani.onrender.com/api/auth/forgot-password', { email: forgotPasswordData.email })
       toast.success('Password reset OTP sent to your email')
       setForgotPasswordStep(2)
     } catch (error) {
@@ -85,7 +85,7 @@ const Login = () => {
 
     try {
       setForgotPasswordLoading(true)
-      await axios.post('/api/auth/reset-password', {
+      await axios.post('https://yasodanandani.onrender.com/api/auth/reset-password', {
         email: forgotPasswordData.email,
         otp: forgotPasswordData.otp,
         newPassword: forgotPasswordData.newPassword

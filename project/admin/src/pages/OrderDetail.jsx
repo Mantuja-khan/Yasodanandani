@@ -31,7 +31,7 @@ const OrderDetail = () => {
 
   const fetchOrder = async () => {
     try {
-      const response = await axios.get(`/api/orders/${id}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/orders/${id}`)
       setOrder(response.data)
     } catch (error) {
       toast.error('Order not found')
@@ -43,7 +43,7 @@ const OrderDetail = () => {
   const updateOrderStatus = async (newStatus, trackingNumber = '') => {
     try {
       setUpdating(true)
-      await axios.put(`/api/orders/${id}/status`, {
+      await axios.put(`https://yasodanandani.onrender.com/api/orders/${id}/status`, {
         orderStatus: newStatus,
         trackingNumber
       })
@@ -65,7 +65,7 @@ const OrderDetail = () => {
   const updatePaymentStatus = async (paymentStatus) => {
     try {
       setUpdating(true)
-      await axios.put(`/api/orders/${id}/payment-status`, {
+      await axios.put(`https://yasodanandani.onrender.com/api/orders/${id}/payment-status`, {
         paymentStatus
       })
       

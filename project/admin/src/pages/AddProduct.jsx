@@ -112,7 +112,7 @@ const AddProduct = () => {
         images: formData.images.filter(img => img.trim())
       }
 
-      await axios.post('/api/products', productData)
+      await axios.post('https://yasodanandani.onrender.com/api/products', productData)
       toast.success('Product added successfully')
       navigate('/products')
     } catch (error) {

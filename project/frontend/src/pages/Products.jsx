@@ -32,7 +32,7 @@ const Products = () => {
         if (!filters[key]) params.delete(key)
       })
 
-      const response = await axios.get(`/api/products?${params}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/products?${params}`)
       setProducts(response.data.products)
       setTotalPages(response.data.totalPages)
     } catch (error) {

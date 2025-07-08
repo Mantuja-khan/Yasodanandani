@@ -29,7 +29,7 @@ const AddOffer = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('/api/products?limit=100')
+      const response = await axios.get('https://yasodanandani.onrender.com/api/products?limit=100')
       setProducts(response.data.products)
     } catch (error) {
       toast.error('Failed to fetch products')
@@ -70,7 +70,7 @@ const AddOffer = () => {
         products: selectedProducts.map(p => p._id)
       }
 
-      await axios.post('/api/offers', offerData)
+      await axios.post('https://yasodanandani.onrender.com/api/offers', offerData)
       toast.success('Offer created successfully')
       navigate('/offers')
     } catch (error) {

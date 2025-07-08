@@ -16,7 +16,7 @@ const Offers = () => {
   const fetchOffers = async () => {
     try {
       setLoading(true)
-      const response = await axios.get('/api/offers/admin')
+      const response = await axios.get('https://yasodanandani.onrender.com/api/offers/admin')
       setOffers(response.data)
     } catch (error) {
       toast.error('Failed to fetch offers')
@@ -28,7 +28,7 @@ const Offers = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this offer?')) {
       try {
-        await axios.delete(`/api/offers/${id}`)
+        await axios.delete(`https://yasodanandani.onrender.com/api/offers/${id}`)
         toast.success('Offer deleted successfully')
         fetchOffers()
       } catch (error) {

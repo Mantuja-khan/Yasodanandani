@@ -22,7 +22,7 @@ const Users = () => {
         limit: 10
       })
 
-      const response = await axios.get(`/api/users?${params}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/users?${params}`)
       setUsers(response.data.users)
       setTotalPages(response.data.totalPages)
     } catch (error) {
@@ -34,7 +34,7 @@ const Users = () => {
 
   const toggleUserStatus = async (userId, currentStatus) => {
     try {
-      await axios.put(`/api/users/${userId}/toggle-status`)
+      await axios.put(`https://yasodanandani.onrender.com/api/users/${userId}/toggle-status`)
       setUsers(users.map(user => 
         user._id === userId 
           ? { ...user, isActive: !currentStatus }

@@ -21,7 +21,7 @@ const ApplicationDetail = () => {
 
   const fetchApplication = async () => {
     try {
-      const response = await axios.get(`/api/contact/applications/${id}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/contact/applications/${id}`)
       setApplication(response.data)
       setFormData({
         status: response.data.status,
@@ -40,7 +40,7 @@ const ApplicationDetail = () => {
     setUpdating(true)
 
     try {
-      const response = await axios.put(`/api/contact/applications/${id}`, formData)
+      const response = await axios.put(`https://yasodanandani.onrender.com/api/contact/applications/${id}`, formData)
       setApplication(response.data)
       toast.success('Application updated successfully')
     } catch (error) {

@@ -14,7 +14,7 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('/api/orders/my-orders')
+      const response = await axios.get('https://yasodanandani.onrender.com/api/orders/my-orders')
       setOrders(response.data)
     } catch (error) {
       toast.error('Failed to fetch orders')

@@ -55,7 +55,7 @@ const Applications = () => {
         params.append('priority', priorityFilter)
       }
 
-      const response = await axios.get(`/api/contact/applications?${params}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/contact/applications?${params}`)
       setApplications(response.data.applications)
       setTotalPages(response.data.totalPages)
     } catch (error) {
@@ -67,7 +67,7 @@ const Applications = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get('/api/contact/admin/stats')
+      const response = await axios.get('https://yasodanandani.onrender.com/api/contact/admin/stats')
       setStats(response.data)
     } catch (error) {
       console.error('Failed to fetch stats:', error)
@@ -77,7 +77,7 @@ const Applications = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this application?')) {
       try {
-        await axios.delete(`/api/contact/applications/${id}`)
+        await axios.delete(`https://yasodanandani.onrender.com/api/contact/applications/${id}`)
         toast.success('Application deleted successfully')
         fetchApplications()
         fetchStats()
@@ -89,7 +89,7 @@ const Applications = () => {
 
   const updateStatus = async (id, status) => {
     try {
-      await axios.put(`/api/contact/applications/${id}`, { status })
+      await axios.put(`https://yasodanandani.onrender.com/api/contact/applications/${id}`, { status })
       toast.success('Status updated successfully')
       fetchApplications()
       fetchStats()

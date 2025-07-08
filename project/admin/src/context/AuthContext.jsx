@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchProfile = async () => {
     try {
-      const response = await axios.get('/api/auth/profile')
+      const response = await axios.get('https://yasodanandani.onrender.com/api/auth/profile')
       if (response.data.role === 'admin') {
         dispatch({ type: 'LOGIN_SUCCESS', payload: response.data })
       } else {
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       dispatch({ type: 'LOGIN_START' })
-      const response = await axios.post('/api/auth/login', { email, password })
+      const response = await axios.post('https://yasodanandani.onrender.com/api/auth/login', { email, password })
       
       const { token, ...user } = response.data
       

@@ -40,7 +40,7 @@ const EditProduct = () => {
 
   const fetchProduct = async () => {
     try {
-      const response = await axios.get(`/api/products/${id}`)
+      const response = await axios.get(`https://yasodanandani.onrender.com/api/products/${id}`)
       const product = response.data
       
       setFormData({
@@ -145,7 +145,7 @@ const EditProduct = () => {
         images: formData.images.filter(img => img.trim())
       }
 
-      await axios.put(`/api/products/${id}`, productData)
+      await axios.put(`https://yasodanandani.onrender.com/api/products/${id}`, productData)
       toast.success('Product updated successfully')
       navigate('/products')
     } catch (error) {

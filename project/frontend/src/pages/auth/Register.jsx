@@ -54,7 +54,7 @@ const Register = () => {
 
     try {
       setLoading(true)
-      await axios.post('/api/auth/send-otp', { email: formData.email })
+      await axios.post('https://yasodanandani.onrender.com/api/auth/send-otp', { email: formData.email })
       toast.success('OTP sent to your email! Please check your inbox.')
       setOtpSent(true)
     } catch (error) {

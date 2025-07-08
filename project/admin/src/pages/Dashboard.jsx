@@ -28,9 +28,9 @@ const Dashboard = () => {
       
       // Fetch all required data
       const [productsRes, usersRes, ordersRes] = await Promise.all([
-        axios.get('/api/products?limit=1'),
-        axios.get('/api/users/stats/overview'),
-        axios.get('/api/orders?limit=10')
+        axios.get('https://yasodanandani.onrender.com/api/products?limit=1'),
+        axios.get('https://yasodanandani.onrender.com/api/users/stats/overview'),
+        axios.get('https://yasodanandani.onrender.com/api/orders?limit=10')
       ])
 
       // Calculate revenue only from paid orders
@@ -129,7 +129,7 @@ const Dashboard = () => {
 
   const fetchCategoryStats = async () => {
     try {
-      const response = await axios.get('/api/products')
+      const response = await axios.get('https://yasodanandani.onrender.com/api/products')
       const products = response.data.products || []
       
       const categoryCount = {}
