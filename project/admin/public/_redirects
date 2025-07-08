@@ -1,0 +1,5 @@
+# Netlify redirects file (for Netlify deployment)
+/*    /index.html   200
+
+# API proxy (if needed)
+/api/*  https://your-backend-url.com/api/:splat  200
