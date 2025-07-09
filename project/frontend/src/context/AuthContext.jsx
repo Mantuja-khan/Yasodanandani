@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchProfile = async () => {
     try {
-      const response = await axios.get('/api/auth/profile')
+      const response = await axios.get('https://yasodanandani.onrender.com/api/auth/profile')
       dispatch({ type: 'LOGIN_SUCCESS', payload: response.data })
     } catch (error) {
       localStorage.removeItem('token')
@@ -54,12 +54,16 @@ export const AuthProvider = ({ children }) => {
   const sendOTP = async (email) => {
     try {
       dispatch({ type: 'LOGIN_START' })
-      await axios.post('/api/auth/send-otp', { email })
+      await axios.post('https://yasodanandani.onrender.com/api/auth/send-otp', { email })
       toast.success('OTP sent to your email')
       return true
     } catch (error) {
+      console.error('Send OTP error:', error)
       dispatch({ type: 'LOGIN_FAILURE', payload: error.response?.data?.message })
-      toast.error(error.response?.data?.message || 'Failed to send OTP')
+      const errorMessage = error.response?.data?.message || 
+                          error.message || 
+                          'Failed to send OTP. Please check your internet connection.'
+      toast.error(errorMessage)
       return false
     }
   }
@@ -67,7 +71,7 @@ export const AuthProvider = ({ children }) => {
   const verifyOTPAndRegister = async (email, otp, name, password, phone, address) => {
     try {
       dispatch({ type: 'LOGIN_START' })
-      const response = await axios.post('/api/auth/verify-otp', {
+      const response = await axios.post('https://yasodanandani.onrender.com/api/auth/verify-otp', {
         email, otp, name, password, phone, address
       })
       
@@ -88,7 +92,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       dispatch({ type: 'LOGIN_START' })
-      const response = await axios.post('/api/auth/login', { email, password })
+      const response = await axios.post('https://yasodanandani.onrender.com/api/auth/login', { email, password })
       
       const { token, ...user } = response.data
       localStorage.setItem('token', token)
@@ -113,7 +117,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (profileData) => {
     try {
-      const response = await axios.put('/api/auth/profile', profileData)
+      const response = await axios.put('https://yasodanandani.onrender.com/api/auth/profile', profileData)
       dispatch({ type: 'UPDATE_USER', payload: response.data })
       toast.success('Profile updated successfully')
       return true

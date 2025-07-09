@@ -365,7 +365,7 @@ const Register = () => {
 
                 {/* Address */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                  <label className=" text-sm font-medium text-gray-700 mb-2 flex items-center">
                     <MapPin className="h-4 w-4 mr-1 text-pink-500" />
                     Delivery Address (Optional)
                   </label>

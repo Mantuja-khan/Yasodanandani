@@ -94,16 +94,16 @@ export const sendOTP = async (email, otp) => {
   try {
     const mailOptions = {
       from: {
-        name: 'ShopEase',
+        name: ' Yasodanandani',
         address: process.env.GMAIL_USER
       },
       to: email,
-      subject: 'Email Verification OTP - ShopEase',
+      subject: 'Email Verification OTP - Yasodanandani',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8fafc;">
           <div style="text-align: center; margin-bottom: 30px;">
             <div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 20px; border-radius: 10px;">
-              <h1 style="margin: 0; font-size: 28px;">🛍️ ShopEase</h1>
+              <h1 style="margin: 0; font-size: 28px;">🛍️  Yasodanandani</h1>
               <p style="margin: 5px 0 0 0; opacity: 0.9;">Your Online Shopping Destination</p>
             </div>
           </div>
@@ -111,7 +111,7 @@ export const sendOTP = async (email, otp) => {
           <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <h2 style="color: #1f2937; margin-bottom: 20px; text-align: center; font-size: 24px;">📧 Email Verification</h2>
             <p style="color: #4b5563; margin-bottom: 30px; font-size: 16px; text-align: center; line-height: 1.6;">
-              Welcome to ShopEase! Please use the following OTP to verify your email address and complete your registration:
+              Welcome to  Yasodanandani! Please use the following OTP to verify your email address and complete your registration:
             </p>
             
             <div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 30px; border-radius: 12px; margin: 30px 0; text-align: center; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
@@ -134,7 +134,7 @@ export const sendOTP = async (email, otp) => {
           
           <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
             <p style="color: #9ca3af; font-size: 12px; margin: 0;">
-              © ${new Date().getFullYear()} ShopEase. All rights reserved.
+              © ${new Date().getFullYear()}  Yasodanandani. All rights reserved.
             </p>
             <p style="color: #9ca3af; font-size: 12px; margin: 5px 0 0 0;">
               This email was sent from: ${process.env.GMAIL_USER}
@@ -182,16 +182,16 @@ export const sendPasswordResetOTP = async (email, otp, userName) => {
   try {
     const mailOptions = {
       from: {
-        name: 'ShopEase',
+        name: ' Yasodanandani',
         address: process.env.GMAIL_USER
       },
       to: email,
-      subject: 'Password Reset OTP - ShopEase',
+      subject: 'Password Reset OTP - Yasodanandani',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8fafc;">
           <div style="text-align: center; margin-bottom: 30px;">
             <div style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; padding: 20px; border-radius: 10px;">
-              <h1 style="margin: 0; font-size: 28px;">🔒 ShopEase</h1>
+              <h1 style="margin: 0; font-size: 28px;">🔒  Yasodanandani</h1>
               <p style="margin: 5px 0 0 0; opacity: 0.9;">Password Reset Request</p>
             </div>
           </div>
@@ -222,7 +222,7 @@ export const sendPasswordResetOTP = async (email, otp, userName) => {
           
           <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
             <p style="color: #9ca3af; font-size: 12px; margin: 0;">
-              © ${new Date().getFullYear()} ShopEase. All rights reserved.
+              © ${new Date().getFullYear()}  Yasodanandani. All rights reserved.
             </p>
             <p style="color: #9ca3af; font-size: 12px; margin: 5px 0 0 0;">
               This email was sent from: ${process.env.GMAIL_USER}
@@ -253,7 +253,7 @@ export const sendOrderConfirmation = async (email, orderDetails) => {
   try {
     const mailOptions = {
       from: {
-        name: 'ShopEase',
+        name: 'Yasodanandani',
         address: process.env.GMAIL_USER
       },
       to: email,
@@ -261,7 +261,7 @@ export const sendOrderConfirmation = async (email, orderDetails) => {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #3b82f6; margin: 0;">ShopEase</h1>
+            <h1 style="color: #3b82f6; margin: 0;">  Yasodanandani</h1>
             <p style="color: #666; margin: 5px 0;">Order Confirmation</p>
           </div>
           
@@ -285,7 +285,7 @@ export const sendOrderConfirmation = async (email, orderDetails) => {
           
           <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
             <p style="color: #9ca3af; font-size: 12px;">
-              © ${new Date().getFullYear()} ShopEase. All rights reserved.
+              © ${new Date().getFullYear()}  Yasodanandani. All rights reserved.
             </p>
             <p style="color: #9ca3af; font-size: 12px;">
               Sent from: ${process.env.GMAIL_USER}
@@ -332,11 +332,11 @@ export const testEmailConfiguration = async () => {
     // Send a test email
     const testMailOptions = {
       from: {
-        name: 'ShopEase Test',
+        name: ' Yasodanandani Test',
         address: process.env.GMAIL_USER
       },
       to: process.env.GMAIL_USER, // Send to self
-      subject: 'ShopEase Email Configuration Test ✅',
+      subject: ' Yasodanandani Email Configuration Test ✅',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f0f9ff;">
           <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 30px; border-radius: 15px; text-align: center;">

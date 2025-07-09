@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { User, Mail, Phone, MapPin, Lock, Save, Download, Smartphone, Crown } from 'lucide-react'
+import { User, Mail, Phone, MapPin, Lock, Save } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import toast from 'react-hot-toast'
 
@@ -7,9 +7,6 @@ const Profile = () => {
   const { user, updateProfile } = useAuth()
   const [activeTab, setActiveTab] = useState('profile')
   const [loading, setLoading] = useState(false)
-  const [deferredPrompt, setDeferredPrompt] = useState(null)
-  const [canInstall, setCanInstall] = useState(false)
-  const [isInstalled, setIsInstalled] = useState(false)
   const [profileData, setProfileData] = useState({
     name: '',
     email: '',
@@ -44,22 +41,6 @@ const Profile = () => {
       })
     }
 
-    // Check if app is already installed
-    const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone
-    setIsInstalled(standalone)
-
-    // Listen for the beforeinstallprompt event
-    const handleBeforeInstallPrompt = (e) => {
-      e.preventDefault()
-      setDeferredPrompt(e)
-      setCanInstall(true)
-    }
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
-    }
   }, [user])
 
   const handleProfileChange = (e) => {
@@ -138,44 +119,6 @@ const Profile = () => {
     }
   }
 
-  const handleInstallApp = async () => {
-    if (deferredPrompt) {
-      // For browsers that support the beforeinstallprompt event
-      deferredPrompt.prompt()
-      const { outcome } = await deferredPrompt.userChoice
-      
-      if (outcome === 'accepted') {
-        setDeferredPrompt(null)
-        setCanInstall(false)
-        setIsInstalled(true)
-        toast.success('App installed successfully!')
-      }
-    } else {
-      // For iOS Safari and other browsers
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
-      
-      if (isIOS) {
-        toast.info('To install: Tap Share → Add to Home Screen', {
-          duration: 5000
-        })
-      } else {
-        // Try to trigger installation for other browsers
-        if ('serviceWorker' in navigator) {
-          try {
-            const registration = await navigator.serviceWorker.ready
-            if (registration) {
-              toast.success('App is ready to install! Check your browser menu for "Install App" option.')
-            }
-          } catch (error) {
-            toast.info('To install: Look for "Install App" in your browser menu')
-          }
-        } else {
-          toast.info('To install: Look for "Install App" in your browser menu')
-        }
-      }
-    }
-  }
-
   const tabs = [
     { id: 'profile', label: 'Profile Information', icon: User },
     { id: 'password', label: 'Change Password', icon: Lock }
@@ -198,48 +141,6 @@ const Profile = () => {
                 <p className="text-sm text-gray-600">{user?.email}</p>
               </div>
             </div>
-
-            {/* Install App Button */}
-            {!isInstalled && (
-              <div className="mb-6 p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg border border-pink-200">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Crown className="h-5 w-5 text-pink-600" />
-                  <h4 className="font-semibold text-pink-800">Install Yasoda Nandani App</h4>
-                </div>
-                <p className="text-sm text-pink-700 mb-3">
-                  Get the full Yasoda Nandani experience on your device! Install our app for faster access and offline browsing.
-                </p>
-                <button
-                  onClick={handleInstallApp}
-                  className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 flex items-center justify-center space-x-2 text-sm"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>Install App</span>
-                </button>
-                <div className="mt-2 flex items-center justify-center space-x-3 text-xs text-pink-600">
-                  <div className="flex items-center space-x-1">
-                    <Smartphone className="h-3 w-3" />
-                    <span>Offline access</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Crown className="h-3 w-3" />
-                    <span>Native feel</span>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {isInstalled && (
-              <div className="mb-6 p-4 bg-green-50 rounded-lg border border-green-200">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Crown className="h-5 w-5 text-green-600" />
-                  <h4 className="font-semibold text-green-800">App Installed</h4>
-                </div>
-                <p className="text-sm text-green-700">
-                  You're using the Yasoda Nandani app! Enjoy the full experience.
-                </p>
-              </div>
-            )}
 
             <nav className="space-y-2">
               {tabs.map((tab) => {

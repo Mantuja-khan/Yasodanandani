@@ -7,19 +7,41 @@ import { AuthProvider } from './context/AuthContext.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import './index.css'
 
-// Register Service Worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration)
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError)
-      })
-  })
+// Set up axios defaults for production
+import axios from 'axios'
+
+// Configure axios base URL for production
+if (import.meta.env.PROD) {
+  // Replace with your actual backend URL
+  axios.defaults.baseURL = 'https://your-backend-url.onrender.com'
+} else {
+  axios.defaults.baseURL = 'http://localhost:5000'
 }
 
+// Add request interceptor for better error handling
+axios.interceptors.request.use(
+  (config) => {
+    return config
+  },
+  (error) => {
+    console.error('Request error:', error)
+    return Promise.reject(error)
+  }
+)
+
+// Add response interceptor for better error handling
+axios.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  (error) => {
+    console.error('Response error:', error)
+    if (error.code === 'NETWORK_ERROR' || error.message === 'Network Error') {
+      console.error('Network error - check if backend is running')
+    }
+    return Promise.reject(error)
+  }
+)
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>

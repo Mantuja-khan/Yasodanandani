@@ -87,16 +87,6 @@ RewriteRule . /index.html [L]
 </IfModule>
 
 # PWA Support
-<IfModule mod_mime.c>
-    # Proper MIME type for manifest
-    AddType application/manifest+json .webmanifest
-    AddType application/manifest+json .json
-    
-    # Service Worker
-    AddType application/javascript .js
-</IfModule>
-
-# Error Pages (Optional)
 ErrorDocument 404 /index.html
 ErrorDocument 403 /index.html
 ErrorDocument 500 /index.html

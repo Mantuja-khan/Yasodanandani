@@ -32,11 +32,13 @@ const Products = () => {
         if (!filters[key]) params.delete(key)
       })
 
-      const response = await axios.get(`https://yasodanandani.onrender.com/api/products?${params}`)
-      setProducts(response.data.products)
-      setTotalPages(response.data.totalPages)
+      const response = await axios.get(`/api/products?${params}`)
+      setProducts(response.data.products || [])
+      setTotalPages(response.data.totalPages || 1)
     } catch (error) {
       console.error('Error fetching products:', error)
+      setProducts([]) // Set empty array as fallback
+      setTotalPages(1)
     } finally {
       setLoading(false)
     }
@@ -57,7 +59,7 @@ const Products = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-1 sm:px-4 lg:px-6 py-0 md:py-8">
+    <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-4 md:py-8">
       <div className="mb-4 md:mb-8">
         <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-4">Our Products</h1>
         

@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
-import PWAInstallPrompt from './components/PWAInstallPrompt'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
@@ -58,7 +57,6 @@ function App() {
         </Routes>
       </main>
       <Footer />
-      <PWAInstallPrompt />
     </div>
   )
 }
